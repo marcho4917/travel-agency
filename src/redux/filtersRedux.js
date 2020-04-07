@@ -46,7 +46,7 @@ export default function reducer(statePart = [], action = {}) {
     case REMOVE_TAG: {
       return {
         ...statePart,
-        tags: statePart.tags.splice(statePart.tags.indexOf(action.payload.tag), -1),
+        tags: statePart.tags.filter(tag => tag != action.payload.tag ),
       };   
     }
     // TODO - handle other action types
