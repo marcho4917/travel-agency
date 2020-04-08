@@ -8,7 +8,7 @@ const OrderForm = ({tripCost, options}) => (
   <Grid>
     <Row>
       <Col xs={12}>
-        <OrderSummary cost={tripCost} options={options} />
+        <OrderSummary tripCost={tripCost} options={options} />
       </Col>
     </Row>
   </Grid>
