@@ -5,7 +5,7 @@ import Icon from '../../../components/common/Icon/Icon';
 import {formatPrice} from '../../../utils/formatPrice';
 
 const OrderOptionIcons = ({values, setOptionValue, required, currentValue}) => (
-  <div className={styles.icon}>
+  <div className={styles.component}>
     {required ? '' : (
       <div 
         className={styles.icon}

@@ -60,7 +60,7 @@ const mockPropsForType = {
 };
   
 const testValue = mockProps.values[1].id;
-//const testValueNumber = 3;
+const testValueNumber = 3;
 
 for(let type in optionTypes){
   describe(`Component OrderOption with type=${type}`, () => {
@@ -143,16 +143,46 @@ for(let type in optionTypes){
       case 'icons': {
         it('renders divs with class icon', () => {
           const divName = renderedSubcomponent.find('.icon');
-          expect(divName.length).toBe(4);
+          expect(divName.length).toBe(testValueNumber);
+        });
+
+        it('should run setOrderOption function on click', () => {
+          renderedSubcomponent.find('.icon').at(2).simulate('click');
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+          expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
         });
         break;
       }
       case 'number': {
+        it('renders div with class number', () => {
+          const expectedClass = renderedSubcomponent.find('.number');
+          expect(expectedClass.length).toBe(1);
+        });
 
+        it('should contains input with min and max value', () => {
+          const input = renderedSubcomponent.find('input');
+          expect(input.prop('min')).toBe(mockProps.limits.min);
+          expect(input.prop('max')).toBe(mockProps.limits.max);
+        });
+
+        it('should run setOrderOption function on change', () => {
+          renderedSubcomponent.find('input').simulate('change', {currentTarget: {value: testValueNumber}});
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+          expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValueNumber });
+        });
         break;
       }
       case 'text': {
+        it('it should render input with type text', () => {
+          const excpectedType = renderedSubcomponent.find('input');
+          expect(excpectedType.prop('type')).toBe('text');
+        });
 
+        it('should run setOrderOption function on change', () => {
+          renderedSubcomponent.find('input').simulate('change', {currentTarget: {value: testValue}});
+          expect(mockSetOrderOption).toBeCalledTimes(1);
+          expect(mockSetOrderOption).toBeCalledWith({ [mockProps.id]: testValue });
+        });
         break;
       }
     }
