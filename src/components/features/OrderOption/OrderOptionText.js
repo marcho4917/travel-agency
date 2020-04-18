@@ -2,19 +2,42 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './OrderOption.scss';
 
-const OrderOptionText = ({ currentValue, setOptionValue }) => (
-  <div>
-    <input className={styles.input}
-      type='text'
-      value={currentValue}
-      onChange={event => setOptionValue(event.currentTarget.value)}
-    />
-  </div>
-);
+class OrderOptionText extends React.Component {
+  static propTypes = {
+    setOptionValue: PropTypes.func,
+    currentValue: PropTypes.string,
+  }
+  
+  state = {
+    isValid: '',
+  }
 
-OrderOptionText.propTypes = {
-  setOptionValue: PropTypes.func,
-  currentValue: PropTypes.string,
-};
+  handleInput = (event) => {
+    if(event.target.value != ''){
+      this.setState({
+        isValid: false,
+      });
+    } else {
+      this.setState({
+        isValid: true,
+      });
+    }
+  }
+  
+
+  render() {
+    const {currentValue, setOptionValue} = this.props;
+    return (
+      <div>
+        <input className={`${styles.input} ${this.state.isValid == true ? styles.error : ''}`}
+          type='text'
+          value={currentValue}
+          onChange={event => setOptionValue(event.currentTarget.value)}
+          onInput={this.handleInput}
+        />
+      </div>
+    );
+  }
+}
 
 export default OrderOptionText;
