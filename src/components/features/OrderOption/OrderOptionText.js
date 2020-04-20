@@ -6,6 +6,7 @@ class OrderOptionText extends React.Component {
   static propTypes = {
     setOptionValue: PropTypes.func,
     currentValue: PropTypes.string,
+    submit: PropTypes.bool,
   }
   
   state = {
@@ -26,10 +27,10 @@ class OrderOptionText extends React.Component {
   
 
   render() {
-    const {currentValue, setOptionValue} = this.props;
+    const {currentValue, setOptionValue, submit} = this.props;
     return (
       <div>
-        <input className={`${styles.input} ${this.state.isValid == true ? styles.error : ''}`}
+        <input className={`${styles.input} ${this.state.isValid == true && submit == false ? styles.error : ''}`}
           type='text'
           value={currentValue}
           onChange={event => setOptionValue(event.currentTarget.value)}
