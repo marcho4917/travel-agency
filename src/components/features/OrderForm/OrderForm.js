@@ -43,27 +43,29 @@ const sendOrder = (tripCost, options, setOrderOption, tripName, tripId, countryC
   }
 };
 
-const handleSubmit = () => {
-  this.props.setSubmited(true);
-  sendOrder();
-};
+const OrderForm = (tripCost, options, setOrderOption) => {
 
+  const handleSubmit = () => {
+    //setSubmited(true);
+    sendOrder();
+  };
 
-const OrderForm = ({tripCost, options, setOrderOption}) => (
-  <Grid>
-    <Row>
-      {pricing.map(option => (
-        <Col md={4} key={option.id}>
-          <OrderOption {...option} currentValue={options[option.id]} setOrderOption={setOrderOption} />
+  return(
+    <Grid>
+      <Row>
+        {pricing.map(option => (
+          <Col md={4} key={option.id}>
+            <OrderOption {...option} currentValue={options[option.id]} setOrderOption={setOrderOption} />
+          </Col>
+        ))}
+        <Col xs={12}>
+          <OrderSummary tripCost={tripCost} options={options} />
+          <Button onClick={() => handleSubmit()}>Order now!</Button>
         </Col>
-      ))}
-      <Col xs={12}>
-        <OrderSummary tripCost={tripCost} options={options} />
-        <Button onClick={() => handleSubmit()}>Order now!</Button>
-      </Col>
-    </Row>
-  </Grid>
-);
+      </Row>
+    </Grid>
+  );
+};
 
 OrderForm.propTypes = {
   tripCost: PropTypes.string,

@@ -28,7 +28,7 @@ export default function reducer(statePart = [], action = {}) {
     case SET_SUBMITED:
       return {
         ...statePart,
-        setSubmited: action.payload,
+        submit: action.payload,
       };
     default:
       return statePart;

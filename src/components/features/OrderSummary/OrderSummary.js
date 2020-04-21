@@ -9,7 +9,7 @@ const OrderSummary = ({tripCost, options}) => (
 );
 
 OrderSummary.propTypes = {
-  tripCost: PropTypes.string,
+  tripCost: PropTypes.object,
   options: PropTypes.object,
 };
 

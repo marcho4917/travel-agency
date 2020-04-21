@@ -25,7 +25,7 @@ const initialState = {
     email: '',
     options: {},
   },
-  submit: '',
+  submit: false,
 };
 
 // define reducers

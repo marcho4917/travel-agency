@@ -10,17 +10,17 @@ class OrderOptionText extends React.Component {
   }
   
   state = {
-    isValid: '',
-  }
+    isValid: this.props.currentValue != '' ? true : false,
+  };
 
   handleInput = (event) => {
     if(event.target.value != ''){
       this.setState({
-        isValid: false,
+        isValid: true,
       });
     } else {
       this.setState({
-        isValid: true,
+        isValid: false,
       });
     }
   }
@@ -30,7 +30,7 @@ class OrderOptionText extends React.Component {
     const {currentValue, setOptionValue, submit} = this.props;
     return (
       <div>
-        <input className={`${styles.input} ${this.state.isValid == true && submit == false ? styles.error : ''}`}
+        <input className={`${styles.input} ${this.state.isValid == false && submit == true ? styles.error : ''}`}
           type='text'
           value={currentValue}
           onChange={event => setOptionValue(event.currentTarget.value)}
