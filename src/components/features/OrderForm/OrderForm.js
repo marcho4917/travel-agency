@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {Grid, Row, Col} from 'react-flexbox-grid';
 import OrderSummary from '../OrderSummary/OrderSummary';
 import pricing from '../../../data/pricing.json';
-import OrderOption from '../OrderOption/OrderOption';
+import OrderOption from '../OrderOption/OrderOptionContainer';
 import Button from '../../common/Button/Button';
 import {formatPrice} from '../../../utils/formatPrice';
 import {calculateTotal} from '../../../utils/calculateTotal';
@@ -43,11 +43,11 @@ const sendOrder = (tripCost, options, setOrderOption, tripName, tripId, countryC
   }
 };
 
-const OrderForm = (tripCost, options, setOrderOption) => {
+const OrderForm = ({tripCost, options, setOrderOption, tripName, tripId, countryCode, setSubmited}) => {
 
   const handleSubmit = () => {
-    //setSubmited(true);
-    sendOrder();
+    setSubmited(true);
+    sendOrder(tripCost, options, setOrderOption, tripName, tripId, countryCode);
   };
 
   return(

@@ -39,6 +39,7 @@ OrderOption.propTypes = {
   type: PropTypes.string,
   id: PropTypes.string,
   setOrderOption: PropTypes.func,
+  isSubmit: PropTypes.bool,
 };
 
 export default OrderOption;
