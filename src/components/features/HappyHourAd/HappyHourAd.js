@@ -7,14 +7,20 @@ class HappyHourdAd extends React.Component {
     static propTypes = {
       promoDescription: PropTypes.string,
       title: PropTypes.string,
-    } 
+    }
 
     constructor(){
       super();
-    
-      setInterval(() => {
+    }
+
+    componentDidMount() {
+      this.timer = setInterval(() => {
         this.forceUpdate();
       }, 1000);
+    }
+  
+    componentWillUnmount() {
+      clearInterval(this.timer);
     }
 
     getCountdownTime(){
@@ -34,8 +40,8 @@ class HappyHourdAd extends React.Component {
 
       return (
         <div className={styles.component}>
-          <div className={styles.promoDescription}>{tikTokTimer > 23 * 60 * 60 ? promoDescription : formatTime(tikTokTimer)}</div>
           <h3 className={styles.title}>{title}</h3>
+          <div className={styles.promoDescription}>{tikTokTimer > 23 * 60 * 60 ? promoDescription : formatTime(tikTokTimer)}</div>
         </div>
       );
     }
