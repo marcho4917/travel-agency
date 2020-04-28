@@ -31,12 +31,12 @@ const checkDescriptionAtTime = (time, expectedDescription) => {
     const component = shallow(<DaysToSummer />);
     const renderedDays = component.find('.component').text();
     expect(renderedDays).toEqual(expectedDescription);
-
     global.Date = trueDate;
   });
 };
 
 describe('Component DaysToSummer with mockDate', () => {
-  checkDescriptionAtTime('2020-06-01', '1 day to summer!');
+  checkDescriptionAtTime('2020-06-19', '1 day to summer!');
   checkDescriptionAtTime('2020-06-25', '');
+  checkDescriptionAtTime('2021-06-18', '2 days to summer!');
 });
