@@ -38,4 +38,5 @@ const checkDescriptionAtTime = (time, expectedDescription) => {
 
 describe('Component DaysToSummer with mockDate', () => {
   checkDescriptionAtTime('2020-06-01', '1 day to summer!');
+  checkDescriptionAtTime('2020-06-25', '');
 });

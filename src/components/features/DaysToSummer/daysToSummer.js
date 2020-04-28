@@ -14,6 +14,7 @@ class DaysToSummer extends React.Component {
     } else if (leftTime <= 0 && leftTime >-93) {
       return null;
     } else {
+      
       return leftTime+ ' ' +'days to summer!';
     } 
   }
