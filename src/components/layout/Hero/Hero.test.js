@@ -37,4 +37,12 @@ describe('Component Hero', () => {
     const expectedClass = component.find('.happyHour');
     expect(expectedClass.length).toEqual(1);
   });
+
+  it('should render DaysToSummer', () => {
+    const expectedTitle = 'Lorem ipsum';
+    const expectedImage = 'image.jpg';
+    const component = shallow(<Hero titleText={expectedTitle} imageSrc={expectedImage} />);
+    const expectedClass = component.find('.summerCounter');
+    expect(expectedClass.length).toEqual(1);
+  });
 });
