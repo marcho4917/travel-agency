@@ -34,7 +34,7 @@ const reducers = {
   order: orderReducer,
 };
 
-// add blank reducers for initial state properties without reducers
+// add blank reducers for  properties without reducers
 Object.keys(initialState).forEach(item => {
   if (typeof reducers[item] == 'undefined') {
     reducers[item] = (statePart = null) => statePart;
