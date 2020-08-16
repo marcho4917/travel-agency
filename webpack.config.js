@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path'); //require to zamiast import
 const merge = require('webpack-merge');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -23,7 +23,7 @@ const baseConfig = () => ({
         },
       },
     ],
-  },
+  }, 
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
@@ -37,14 +37,14 @@ const devConfig = () => ({
       {
         test: /\.(s*)css$/,
         use: [
-          'style-loader',
+          'style-loader', 
           {
             loader: 'css-loader',
             query: {
-              modules: true,
+              modules: true, 
               localIdentName: '[name]_[local]_[hash:base64:5]',
             },
-          },
+          }, 
           'sass-loader',
         ],
       },
@@ -57,21 +57,20 @@ const prodConfig = () => ({
     rules: [
       {
         test:/\.(s*)css$/,
-        include: /flexboxgrid/,
         use:[
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             query: {
-              modules: true,
+              modules: true, 
               localIdentName: '[name]_[local]_[hash:base64:5]',
             },
-          },
+          }, 
           'sass-loader',
         ],
       },
     ],
-  },
+  }, 
   plugins: [
     new MiniCssExtractPlugin({
       filename: 'styles_bundle_[name].css',
